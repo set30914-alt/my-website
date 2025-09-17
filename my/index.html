@@ -3,51 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Standoff 2 Cup — Турніри</title>
+  <title>Standoff 2 Cup — Головна</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Сітка для турнірів і таблиці */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    /* Перезаписуємо стиль карток на темний */
-    body.tournaments .card {
-      background: var(--card);
-      color: var(--text);
-      border: 1px solid #232837;
-    }
-
-    /* Таблиця у темних кольорах */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      color: var(--text);
-    }
-    table th, table td {
-      border: 1px solid #2a3144;
-      padding: 10px;
-      text-align: center;
-    }
-    table th {
-      background: #1d222e;
-      color: var(--accent);
-    }
-    table tr:nth-child(even) {
-      background: #141820;
-    }
-  </style>
 </head>
-<body class="tournaments">
+<body class="home">
   <!-- Навігація -->
   <header class="site-header">
     <nav class="nav container">
       <a class="logo" href="index.html">Standoff 2 Cup</a>
       <ul class="menu">
-        <li><a href="index.html">Головна</a></li>
-        <li><a href="tournaments.html" class="active">Турніри</a></li>
+        <li><a href="index.html" class="active">Головна</a></li>
+        <li><a href="tournaments.html">Турніри</a></li>
         <li><a href="support.html">Техпідтримка</a></li>
         <li><a class="btn-link" href="register.html">Реєстрація</a></li>
       </ul>
@@ -55,55 +21,23 @@
   </header>
 
   <main class="container">
+    <!-- Опис сайту -->
     <section class="card">
-      <h1>Розклад турнірів</h1>
-      <p>Тут ви знайдете розклад турнірів на цей тиждень та інформацію про команди.</p>
+      <h1>Standoff 2 Cup</h1>
+      <p>Цей сайт створений для фанатських турнірів з улюблених ігор:</p>
+      <ul>
+        <li><b>Standoff 2</b> — мобільний шутер 5x5</li>
+        <li><b>CS:GO</b> — класика кіберспорту</li>
+        <li><b>Dota 2</b> — легендарна MOBA</li>
+        <li><b>PUBG</b> — королівська битва</li>
+      </ul>
+      <p>Тут ви знайдете інформацію про найближчі фан-турніри, розклад, командні таблиці та зможете зареєструватися.</p>
     </section>
 
-    <!-- Турніри + Команди -->
-    <section class="grid">
-      <!-- Турніри -->
-      <div class="card">
-        <h2>Турніри наступного тижня</h2>
-        <ul>
-          <li>18 вересня — Клановий бій (5x5)</li>
-          <li>20 вересня — Індивідуальний турнір (1x1)</li>
-          <li>22 вересня — Кубок стрімерів</li>
-        </ul>
-      </div>
-
-      <!-- Таблиця команд -->
-      <div class="card">
-        <h2>Команди</h2>
-        <table>
-          <tr>
-            <th>Місце</th>
-            <th>Команда</th>
-            <th>Очки</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Alpha Team</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Bravo Squad</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Shadow Hunters</td>
-            <td>8</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Night Wolves</td>
-            <td>6</td>
-          </tr>
-        </table>
-      </div>
-    </section>
+    <!-- Кнопка доступні турніри -->
+    <div style="text-align: center; margin-top: 20px;">
+      <a class="btn-tournament" href="tournaments.html">Доступні турніри</a>
+    </div>
   </main>
 
   <footer class="container footer">
