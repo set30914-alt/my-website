@@ -21,26 +21,71 @@
   </header>
 
   <!-- Контент -->
- <main class="container">
+<main class="container">
   <section class="card">
     <h1>Зв'язок з техпідтримкою</h1>
-    <p class="subtitle">Опишіть проблему/питання. Сповіщення приходять на нашу пошту автоматично.</p>
+    <p class="subtitle">Опишіть проблему. Вкажіть email або @telegram, щоб ми могли відповісти.</p>
 
-    <form id="supportForm" novalidate>
+    <form id="supportForm"
+          class="stack"
+          action="https://formspree.io/f/ВАШ_ID"  <!-- ← заміни на свій endpoint -->
+          method="POST"
+          onsubmit="return checkContact()">
+
       <label>
         Повідомлення *
-        <textarea id="supportMessage" name="message" rows="8" required
-          placeholder="Коротко й по суті: що сталося, на якій сторінці, що очікували побачити?"></textarea>
+        <textarea name="message" rows="8" required
+          placeholder="Що сталося? Де саме? Що очікували побачити?"></textarea>
       </label>
 
-      <!-- honeypot від ботів -->
+      <div class="grid-2">
+        <label>
+          Email (якщо маєте)
+          <input type="email" name="email" placeholder="you@example.com">
+        </label>
+        <label>
+          Telegram (якщо email не зручний)
+          <input type="text" name="telegram" placeholder="@your_username">
+        </label>
+      </div>
+
+      <!-- додаткові службові поля -->
+      <input type="hidden" name="_subject" value="Повідомлення з сайту Standoff 2 Cup">
+      <!-- після відправки повертаємось на цю ж сторінку з позначкою ?sent=1 -->
+      <input type="hidden" name="_next" value="support.html?sent=1">
+      <!-- honeypot проти ботів -->
       <input type="text" name="_gotcha" class="hp" autocomplete="off" tabindex="-1">
 
-      <button type="submit" class="btn" id="supportBtn">Надіслати</button>
+      <button type="submit" class="btn">Надіслати</button>
       <p id="supportMsg" class="msg" aria-live="polite"></p>
     </form>
   </section>
 </main>
+
+<script>
+  // Вимагаємо хоча б один спосіб контакту
+  function checkContact() {
+    const email = (document.querySelector('[name=email]')?.value || '').trim();
+    const tg    = (document.querySelector('[name=telegram]')?.value || '').trim();
+    if (!email && !tg) {
+      const m = document.getElementById('supportMsg');
+      if (m) { m.className = 'msg error'; m.textContent = 'Вкажіть email або @telegram для відповіді.'; }
+      return false; // не відправляємо форму
+    }
+    return true;
+  }
+
+  // Показуємо "успішно надіслано" після редиректу з Formspree
+  (function () {
+    const ok = new URLSearchParams(location.search).get('sent') === '1';
+    if (ok) {
+      const m = document.getElementById('supportMsg');
+      if (m) { m.className = 'msg success'; m.textContent = 'Повідомлення надіслано. Ми відповімо найближчим часом!'; }
+      // очищаємо параметр у адресному рядку (необов’язково)
+      history.replaceState(null, '', 'support.html');
+    }
+  })();
+</script>
 
 
   <!-- Футер -->

@@ -243,4 +243,6 @@ table tr:nth-child(even) {
     gap: 12px;
   }
 }
-.hp{ display:none !important; }
+
+.hp{ display:none !important; }        /* honeypot */
+.stack label{ display:block; margin:12px 0; }
