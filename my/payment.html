@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Оплата участі — Standoff 2 Cup</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .qr-box {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .qr-box img {
+      max-width: 220px;
+      margin: 10px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="logo" href="index.html">Standoff 2 Cup</a>
+      <ul class="menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="tournaments.html">Турніри</a></li>
+        <li><a href="support.html">Техпідтримка</a></li>
+        <li><a class="btn-link" href="register.html">Реєстрація</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Оплата участі</h1>
+    <p>Внесок за участь команди становить <strong>500 грн</strong> (50 грн з гравця).  
+       Оплата здійснюється капітаном команди.</p>
+
+    <!-- ✅ Кнопка на баночку Monobank -->
+    <a href="https://send.monobank.ua/jar/9it8qfz5vp" target="_blank" class="btn">
+      Оплатити 500 грн через Monobank
+    </a>
+
+    <p class="subtitle">
+      📌 Якщо сторінка довго вантажиться на комп’ютері — відкрийте її з телефону.  
+      Або скористайтесь QR-кодом нижче:
+    </p>
+
+    <!-- ✅ QR-код баночки -->
+    <div class="qr-box">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://send.monobank.ua/jar/9it8qfz5vp" alt="QR для оплати Monobank">
+      <p>Відскануйте цей QR-код у додатку Monobank</p>
+    </div>
+  </main>
+
+  <footer class="container footer">
+    <small>© 2025 Standoff 2 Cup. Неофіційний фан-турнір.</small>
+  </footer>
+</body>
+</html>

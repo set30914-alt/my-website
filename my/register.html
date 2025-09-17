@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Standoff 2 — Реєстрація на турнір</title>
   <link rel="stylesheet" href="style.css"/>
+  <style>
+    .note{background:#121622;border:1px dashed #2a3144;padding:12px;border-radius:12px;margin:12px 0}
+    .steps{margin:10px 0;padding-left:18px;color:#a9b3c1}
+    .steps li{margin:6px 0}
+    .btn-inline{display:inline-block;padding:6px 10px;border-radius:10px;background:linear-gradient(90deg,#4da3ff,#7cffc1);color:#0b0e12;text-decoration:none;font-weight:800}
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -21,7 +27,17 @@
 
   <header class="container">
     <h1>Standoff 2 — Реєстрація на турнір</h1>
-    <p class="subtitle">Заповніть форму команди. Після відправки ми підтвердимо участь у Telegram або на Email.</p>
+    <p class="subtitle">Спочатку оплатіть внесок 500 грн, потім надішліть заявку.</p>
+    <div class="note">
+      <strong>Як зареєструватись:</strong>
+      <ol class="steps">
+        <li>Перейдіть на сторінку оплати та сплатіть <b>500 грн</b> за команду.</li>
+        <li>У коментарі платежу вкажіть <b>назву команди</b> і <b>@telegram капітана</b>.</li>
+        <li>Поверніться сюди, поставте позначку «Оплатив» і впишіть <b>коментар/ID платежу</b>.</li>
+        <li>Натисніть «Надіслати заявку» — ми перевіримо платіж і підтвердимо участь.</li>
+      </ol>
+      <a class="btn-inline" href="payment.html">Перейти до оплати</a>
+    </div>
   </header>
 
   <main class="container">
@@ -86,49 +102,41 @@
             Область (регіон) *
             <select id="region" name="region" required>
               <option value="">— оберіть область —</option>
-              <option>Вінницька</option>
-              <option>Волинська</option>
-              <option>Дніпропетровська</option>
-              <option>Донецька</option>
-              <option>Житомирська</option>
-              <option>Закарпатська</option>
-              <option>Запорізька</option>
-              <option>Івано-Франківська</option>
-              <option>Київська</option>
-              <option>Кіровоградська</option>
-              <option>Луганська</option>
-              <option>Львівська</option>
-              <option>Миколаївська</option>
-              <option>Одеська</option>
-              <option>Полтавська</option>
-              <option>Рівненська</option>
-              <option>Сумська</option>
-              <option>Тернопільська</option>
-              <option>Харківська</option>
-              <option>Херсонська</option>
-              <option>Хмельницька</option>
-              <option>Черкаська</option>
-              <option>Чернівецька</option>
-              <option>Чернігівська</option>
-              <option>м. Київ</option>
-              <option>АР Крим</option>
-              <option>м. Севастополь</option>
+              <option>Вінницька</option><option>Волинська</option><option>Дніпропетровська</option>
+              <option>Донецька</option><option>Житомирська</option><option>Закарпатська</option>
+              <option>Запорізька</option><option>Івано-Франківська</option><option>Київська</option>
+              <option>Кіровоградська</option><option>Луганська</option><option>Львівська</option>
+              <option>Миколаївська</option><option>Одеська</option><option>Полтавська</option>
+              <option>Рівненська</option><option>Сумська</option><option>Тернопільська</option>
+              <option>Харківська</option><option>Херсонська</option><option>Хмельницька</option>
+              <option>Черкаська</option><option>Чернівецька</option><option>Чернігівська</option>
+              <option>м. Київ</option><option>АР Крим</option><option>м. Севастополь</option>
               <option>За межами України</option>
             </select>
           </label>
         </div>
 
-        <label>
-          Бажана дата/сезон турніру
-          <input type="date" name="date" />
-        </label>
+      
+<h2 style="margin-top:18px;">Підтвердження оплати</h2>
+<div class="grid-2">
+  <label>
+    Назва команди + @telegram капітана (як у коментарі до платежу) *
+    <input type="text" name="paymentInfo" id="paymentInfo" required
+           placeholder="Напр., Pavuchata @olxiy" />
+  </label>
+  <label class="checkbox" style="align-items:center;">
+    <input type="checkbox" name="paid" id="paid" required />
+    Підтверджую, що оплатив(-ла) внесок 500 грн
+  </label>
+</div>
+
 
         <label class="checkbox">
           <input type="checkbox" name="agree" required />
-          Я погоджуюсь з <a href="privacy.html" target="_blank">умовами обробки персональних даних</a> *
+          Погоджуюсь з <a href="privacy.html" target="_blank">умовами обробки персональних даних</a> *
         </label>
 
-        <button type="submit" class="btn">Надіслати заявку</button>
+        <button type="submit" class="btn" id="submitBtn">Надіслати заявку</button>
         <p id="formMsg" class="msg" aria-live="polite"></p>
       </section>
     </form>
