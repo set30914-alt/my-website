@@ -19,16 +19,13 @@
     </nav>
   </header>
 
-  <!-- ваш оригинальный контент формы -->
   <header class="container">
     <h1>Standoff 2 — Реєстрація на турнір</h1>
     <p class="subtitle">Заповни форму команди. Після відправки ми підтвердимо участь у Telegram/Email.</p>
   </header>
 
   <main class="container">
-   <main class="container">
-  <form id="regForm" novalidate>
-    <section class="card">
+    <form action="https://formspree.io/f/mvgbjqyy" method="POST" class="card">
       <h2>Інформація про команду</h2>
 
       <label>
@@ -127,17 +124,11 @@
       </label>
 
       <button type="submit" class="btn">Надіслати заявку</button>
-      <p id="formMsg" class="msg" aria-live="polite"></p>
-    </section>
-  </form>
-</main>
-
+    </form>
   </main>
 
   <footer class="container footer">
     <small>© 2025 Standoff 2 Cup. Неофіційний фан-турнір.</small>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>
