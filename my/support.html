@@ -3,103 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Standoff 2 Cup — Техпіддтримка</title>
+  <title>Техпідтримка — Standoff 2 Cup</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Шапка -->
   <header class="site-header">
     <nav class="nav container">
       <a class="logo" href="index.html">Standoff 2 Cup</a>
       <ul class="menu">
         <li><a href="index.html">Головна</a></li>
         <li><a href="tournaments.html">Турніри</a></li>
-        <li><a href="support.html" class="active">Техпіддтримка</a></li>
-        <li><a class="btn-link" href="register.html">Регистрация</a></li>
+        <li><a class="active" href="support.html">Техпідтримка</a></li>
+        <li><a class="btn-link" href="register.html">Реєстрація</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Контент -->
-<main class="container">
-  <section class="card">
-    <h1>Зв'язок з техпідтримкою</h1>
-    <p class="subtitle">Опишіть проблему. Вкажіть email або @telegram, щоб ми могли відповісти.</p>
+  <main class="container">
+    <section class="card">
+      <h1>Зв'язок з техпідтримкою</h1>
+      <p class="subtitle">Опишіть проблему. Вкажіть email або @telegram, щоб ми могли відповісти.</p>
 
-    <form id="supportForm"
-          class="stack"
-          action="https://formspree.io/f/ВАШ_ID"  <!-- ← заміни на свій endpoint -->
-          method="POST"
-          onsubmit="return checkContact()">
-
-      <label>
-        Повідомлення *
-        <textarea name="message" rows="8" required
-          placeholder="Що сталося? Де саме? Що очікували побачити?"></textarea>
-      </label>
-
-      <div class="grid-2">
+      <form id="supportForm" class="stack" novalidate>
         <label>
-          Email (якщо маєте)
-          <input type="email" name="email" placeholder="you@example.com">
+          Повідомлення *
+          <textarea id="supportMessage" name="message" rows="8" required
+            placeholder="Що сталося? Де саме? Що очікували побачити?"></textarea>
         </label>
-        <label>
-          Telegram (якщо email не зручний)
-          <input type="text" name="telegram" placeholder="@your_username">
-        </label>
-      </div>
 
-      <!-- додаткові службові поля -->
-      <input type="hidden" name="_subject" value="Повідомлення з сайту Standoff 2 Cup">
-      <!-- після відправки повертаємось на цю ж сторінку з позначкою ?sent=1 -->
-      <input type="hidden" name="_next" value="support.html?sent=1">
-      <!-- honeypot проти ботів -->
-      <input type="text" name="_gotcha" class="hp" autocomplete="off" tabindex="-1">
+        <div class="grid-2">
+          <label>
+            Email (якщо маєте)
+            <input type="email" name="email" placeholder="you@example.com" inputmode="email" autocomplete="email">
+          </label>
+          <label>
+            Telegram (якщо email не зручний)
+            <input type="text" name="telegram" placeholder="@your_username" autocapitalize="off" autocorrect="off" spellcheck="false">
+          </label>
+        </div>
 
-      <button type="submit" class="btn">Надіслати</button>
-      <p id="supportMsg" class="msg" aria-live="polite"></p>
-    </form>
-  </section>
-</main>
+        <!-- honeypot проти ботів -->
+        <input type="text" name="_gotcha" class="hp" autocomplete="off" tabindex="-1">
 
-<script>
-  // Вимагаємо хоча б один спосіб контакту
-  function checkContact() {
-    const email = (document.querySelector('[name=email]')?.value || '').trim();
-    const tg    = (document.querySelector('[name=telegram]')?.value || '').trim();
-    if (!email && !tg) {
-      const m = document.getElementById('supportMsg');
-      if (m) { m.className = 'msg error'; m.textContent = 'Вкажіть email або @telegram для відповіді.'; }
-      return false; // не відправляємо форму
-    }
-    return true;
-  }
+        <button type="submit" class="btn" id="supportBtn">Надіслати</button>
+        <p id="supportMsg" class="msg" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
 
-  // Показуємо "успішно надіслано" після редиректу з Formspree
-  (function () {
-    const ok = new URLSearchParams(location.search).get('sent') === '1';
-    if (ok) {
-      const m = document.getElementById('supportMsg');
-      if (m) { m.className = 'msg success'; m.textContent = 'Повідомлення надіслано. Ми відповімо найближчим часом!'; }
-      // очищаємо параметр у адресному рядку (необов’язково)
-      history.replaceState(null, '', 'support.html');
-    }
-  })();
-</script>
-
-
-  <!-- Футер -->
   <footer class="container footer">
     <small>© 2025 Standoff 2 Cup. Неофіційний фан-турнір.</small>
   </footer>
 
-  <script>
-    // Имитация отправки формы
-    document.getElementById('supportForm').addEventListener('submit', e => {
-      e.preventDefault();
-      document.getElementById('supportMsg').textContent =
-        'Сповіщення відправленно!';
-    });
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
