@@ -103,6 +103,30 @@ input:focus, select:focus, textarea:focus {
   filter: brightness(1.05);
 }
 
+.btn-link {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #0b0e12;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn-tournament {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #0b0e12;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: filter 0.2s;
+}
+.btn-tournament:hover {
+  filter: brightness(1.1);
+}
+
 .msg {
   margin-top: 10px;
   min-height: 20px;
@@ -113,6 +137,51 @@ input:focus, select:focus, textarea:focus {
 }
 .msg.error {
   color: var(--danger);
+}
+
+/* ======= Турниры ======= */
+.tournament-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.status.open {
+  background: rgba(0, 255, 127, 0.1);
+  color: #4effa1;
+  border: 1px solid #4effa1;
+}
+.status.closed {
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
+/* Таблицы */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  color: var(--text);
+}
+table th, table td {
+  border: 1px solid #2a3144;
+  padding: 10px;
+  text-align: center;
+}
+table th {
+  background: #1d222e;
+  color: var(--accent);
+}
+table tr:nth-child(even) {
+  background: #141820;
 }
 
 /* ======= Футер ======= */
@@ -161,14 +230,6 @@ input:focus, select:focus, textarea:focus {
 }
 .menu a.active {
   color: var(--accent);
-  font-weight: 700;
-}
-
-.btn-link {
-  padding: 8px 14px;
-  border-radius: 8px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  color: #0b0e12;
   font-weight: 700;
 }
 
