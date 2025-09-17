@@ -21,42 +21,72 @@
   </header>
 
   <!-- Контент -->
-  <main class="container">
-    <section class="card">
-      <h1>Зв'язок з техпідтримкой</h1>
-      <p class="subtitle">Якщо виникли питання, пишіть на пряму адмінам чи через форму нижче.</p>
+<main class="container">
+  <section class="card">
+    <h1>Зв'язок з техпідтримкою</h1>
+    <p class="subtitle">Опишіть проблему. Вкажіть email або @telegram, щоб ми могли відповісти.</p>
 
-      <!-- Два администратора -->
-      <div class="grid-2" style="margin-bottom:20px;">
-        <div>
-          <h2>Адмін 1</h2>
-          <p><strong>Нік:</strong> Danilo</p>
-          <p><strong>Почта:</strong> fogus1825@gmail.com</p>
-        </div>
-        <div>
-          <h2>Адмін 2</h2>
-          <p><strong>Нік:</strong> Oleksii</p>
-          <p><strong>Почта:</strong> minkevicoleksij@gmail.com</p>
-        </div>
+    <form id="supportForm"
+          class="stack"
+          action="https://formspree.io/f/ВАШ_ID"  <!-- ← заміни на свій endpoint -->
+          method="POST"
+          onsubmit="return checkContact()">
+
+      <label>
+        Повідомлення *
+        <textarea name="message" rows="8" required
+          placeholder="Що сталося? Де саме? Що очікували побачити?"></textarea>
+      </label>
+
+      <div class="grid-2">
+        <label>
+          Email (якщо маєте)
+          <input type="email" name="email" placeholder="you@example.com">
+        </label>
+        <label>
+          Telegram (якщо email не зручний)
+          <input type="text" name="telegram" placeholder="@your_username">
+        </label>
       </div>
 
-      <!-- Форма обратной связи -->
-      <h2>Напишіть нам</h2>
-      <form id="supportForm">
-        <label>Ваше ім'я
-          <input type="text" name="name" required>
-        </label>
-        <label>Email
-          <input type="email" name="email" required>
-        </label>
-        <label>Сповіщення
-          <textarea name="message" rows="4" required></textarea>
-        </label>
-        <button class="btn" type="submit">Надіслати</button>
-        <div class="msg" id="supportMsg"></div>
-      </form>
-    </section>
-  </main>
+      <!-- додаткові службові поля -->
+      <input type="hidden" name="_subject" value="Повідомлення з сайту Standoff 2 Cup">
+      <!-- після відправки повертаємось на цю ж сторінку з позначкою ?sent=1 -->
+      <input type="hidden" name="_next" value="support.html?sent=1">
+      <!-- honeypot проти ботів -->
+      <input type="text" name="_gotcha" class="hp" autocomplete="off" tabindex="-1">
+
+      <button type="submit" class="btn">Надіслати</button>
+      <p id="supportMsg" class="msg" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<script>
+  // Вимагаємо хоча б один спосіб контакту
+  function checkContact() {
+    const email = (document.querySelector('[name=email]')?.value || '').trim();
+    const tg    = (document.querySelector('[name=telegram]')?.value || '').trim();
+    if (!email && !tg) {
+      const m = document.getElementById('supportMsg');
+      if (m) { m.className = 'msg error'; m.textContent = 'Вкажіть email або @telegram для відповіді.'; }
+      return false; // не відправляємо форму
+    }
+    return true;
+  }
+
+  // Показуємо "успішно надіслано" після редиректу з Formspree
+  (function () {
+    const ok = new URLSearchParams(location.search).get('sent') === '1';
+    if (ok) {
+      const m = document.getElementById('supportMsg');
+      if (m) { m.className = 'msg success'; m.textContent = 'Повідомлення надіслано. Ми відповімо найближчим часом!'; }
+      // очищаємо параметр у адресному рядку (необов’язково)
+      history.replaceState(null, '', 'support.html');
+    }
+  })();
+</script>
+
 
   <!-- Футер -->
   <footer class="container footer">
