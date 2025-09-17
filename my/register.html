@@ -26,8 +26,112 @@
   </header>
 
   <main class="container">
-    <!-- …весь ваш код формы без изменений… -->
-    <!-- вставьте сюда блок <form> и <footer> из исходного файла -->
+   <main class="container">
+  <form id="regForm" novalidate>
+    <section class="card">
+      <h2>Інформація про команду</h2>
+
+      <label>
+        Назва команди *
+        <input type="text" name="teamName" required placeholder="Напр., Pavuchata"/>
+      </label>
+
+      <label>
+        Капітан (нік) *
+        <input type="text" name="captainNick" required placeholder="Напр., OLXiy"/>
+      </label>
+
+      <div class="grid-2">
+        <label>
+          Телефон (капітана) *
+          <input type="tel" name="phone" required placeholder="+380..." />
+        </label>
+        <label>
+          Email (капітана) *
+          <input type="email" name="email" required placeholder="you@example.com" />
+        </label>
+      </div>
+
+      <label>
+        Ім’я користувача в Telegram капітана *
+        <input type="text" name="telegram" required placeholder="@your_username"/>
+      </label>
+
+      <label>
+        Склад гравців (до 5 нікнеймів, кожен з нового рядка) *
+        <textarea id="players" name="players" required rows="6"
+          placeholder="1) ...&#10;2) ...&#10;3) ...&#10;4) ...&#10;5) ..."></textarea>
+      </label>
+
+      <div class="grid-2">
+        <label>
+          Середній ранг команди *
+          <select id="rank" name="rank" required>
+            <option value="">— оберіть —</option>
+            <option>Bronze</option>
+            <option>Silver</option>
+            <option>Gold</option>
+            <option>Phoenix</option>
+            <option>Ranger</option>
+            <option>Champion</option>
+            <option>Master</option>
+            <option>Elite</option>
+            <option>The Legend</option>
+          </select>
+        </label>
+
+        <label>
+          Область (регіон) *
+          <select id="region" name="region" required>
+            <option value="">— оберіть область —</option>
+            <option>Вінницька</option>
+            <option>Волинська</option>
+            <option>Дніпропетровська</option>
+            <option>Донецька</option>
+            <option>Житомирська</option>
+            <option>Закарпатська</option>
+            <option>Запорізька</option>
+            <option>Івано-Франківська</option>
+            <option>Київська</option>
+            <option>Кіровоградська</option>
+            <option>Луганська</option>
+            <option>Львівська</option>
+            <option>Миколаївська</option>
+            <option>Одеська</option>
+            <option>Полтавська</option>
+            <option>Рівненська</option>
+            <option>Сумська</option>
+            <option>Тернопільська</option>
+            <option>Харківська</option>
+            <option>Херсонська</option>
+            <option>Хмельницька</option>
+            <option>Черкаська</option>
+            <option>Чернівецька</option>
+            <option>Чернігівська</option>
+            <option>м. Київ</option>
+            <option>АР Крим</option>
+            <option>м. Севастополь</option>
+            <option>За межами України</option>
+          </select>
+        </label>
+      </div>
+
+      <label>
+        Бажана дата/сезон турніру
+        <input type="date" name="date"/>
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" name="agree" required />
+        Я погоджуюсь з <a href="privacy.html" target="_blank">умовами обробки персональних даних</a> *
+      </label>
+
+      <button type="submit" class="btn">Надіслати заявку</button>
+      <p id="formMsg" class="msg" aria-live="polite"></p>
+    </section>
+  </form>
+</main>
+
   </main>
 
   <footer class="container footer">
