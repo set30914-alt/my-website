@@ -182,3 +182,4 @@ input:focus, select:focus, textarea:focus {
     gap: 12px;
   }
 }
+.hp{ display:none !important; }

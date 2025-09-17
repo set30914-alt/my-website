@@ -21,42 +21,27 @@
   </header>
 
   <!-- Контент -->
-  <main class="container">
-    <section class="card">
-      <h1>Зв'язок з техпідтримкой</h1>
-      <p class="subtitle">Якщо виникли питання, пишіть на пряму адмінам чи через форму нижче.</p>
+ <main class="container">
+  <section class="card">
+    <h1>Зв'язок з техпідтримкою</h1>
+    <p class="subtitle">Опишіть проблему/питання. Сповіщення приходять на нашу пошту автоматично.</p>
 
-      <!-- Два администратора -->
-      <div class="grid-2" style="margin-bottom:20px;">
-        <div>
-          <h2>Адмін 1</h2>
-          <p><strong>Нік:</strong> Danilo</p>
-          <p><strong>Почта:</strong> fogus1825@gmail.com</p>
-        </div>
-        <div>
-          <h2>Адмін 2</h2>
-          <p><strong>Нік:</strong> Oleksii</p>
-          <p><strong>Почта:</strong> minkevicoleksij@gmail.com</p>
-        </div>
-      </div>
+    <form id="supportForm" novalidate>
+      <label>
+        Повідомлення *
+        <textarea id="supportMessage" name="message" rows="8" required
+          placeholder="Коротко й по суті: що сталося, на якій сторінці, що очікували побачити?"></textarea>
+      </label>
 
-      <!-- Форма обратной связи -->
-      <h2>Напишіть нам</h2>
-      <form id="supportForm">
-        <label>Ваше ім'я
-          <input type="text" name="name" required>
-        </label>
-        <label>Email
-          <input type="email" name="email" required>
-        </label>
-        <label>Сповіщення
-          <textarea name="message" rows="4" required></textarea>
-        </label>
-        <button class="btn" type="submit">Надіслати</button>
-        <div class="msg" id="supportMsg"></div>
-      </form>
-    </section>
-  </main>
+      <!-- honeypot від ботів -->
+      <input type="text" name="_gotcha" class="hp" autocomplete="off" tabindex="-1">
+
+      <button type="submit" class="btn" id="supportBtn">Надіслати</button>
+      <p id="supportMsg" class="msg" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
 
   <!-- Футер -->
   <footer class="container footer">
