@@ -246,3 +246,35 @@ table tr:nth-child(even) {
 
 .hp{ display:none !important; }        /* honeypot */
 .stack label{ display:block; margin:12px 0; }
+/* Списки-кнопки на сторінці ігор */
+.list{ display:flex; flex-direction:column; gap:10px; }
+.item-link{
+  padding:14px 16px; border-radius:12px;
+  border:1px solid #232837; background:var(--card);
+  color:var(--text); text-decoration:none; font-weight:700;
+}
+.item-link.primary{
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color:#0b0e12; border:0; text-align:center;
+}
+.item-link.disabled{ opacity:.6; cursor:not-allowed; }
+
+/* Повернення назад */
+.back-link{ display:inline-block; margin:4px 0 10px; color:var(--accent); text-decoration:none; }
+
+/* Картка турніру */
+.t-card{
+  background: var(--card);
+  border:1px solid #232837;
+  border-radius:16px;
+  padding:18px;
+  margin-top:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.t-card .t-head{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+.t-meta{ margin:10px 0 14px; }
+.t-meta li{ margin:6px 0; }
+.t-actions{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.link{ color:var(--accent); text-decoration:none; }
