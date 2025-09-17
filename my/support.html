@@ -3,33 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Standoff 2 Cup — Техподдержка</title>
+  <title>Standoff 2 Cup — Техпіддтримка</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Шапка -->
   <header class="site-header">
     <nav class="nav container">
       <a class="logo" href="index.html">Standoff 2 Cup</a>
       <ul class="menu">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="tournaments.html">Турниры</a></li>
-        <li><a href="support.html">Техподдержка</a></li>
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="tournaments.html">Турніри</a></li>
+        <li><a href="support.html" class="active">Техпіддтримка</a></li>
         <li><a class="btn-link" href="register.html">Регистрация</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Контент -->
   <main class="container">
     <section class="card">
-      <h1>Техподдержка</h1>
-      <p>Возникли вопросы? Пишите нам в <a href="https://t.me/your_support">Telegram</a>  
-         или на почту <a href="mailto:support@example.com">support@example.com</a>.</p>
-      <p>Ответим в течение 24 часов.</p>
+      <h1>Зв'язок з техпідтримкой</h1>
+      <p class="subtitle">Якщо виникли питання, пишіть на пряму адмінам чи через форму нижче.</p>
+
+      <!-- Два администратора -->
+      <div class="grid-2" style="margin-bottom:20px;">
+        <div>
+          <h2>Адмін 1</h2>
+          <p><strong>Нік:</strong> Danilo</p>
+          <p><strong>Почта:</strong> fogus1825@gmail.com</p>
+        </div>
+        <div>
+          <h2>Адмін 2</h2>
+          <p><strong>Нік:</strong> Oleksii</p>
+          <p><strong>Почта:</strong> minkevicoleksij@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Форма обратной связи -->
+      <h2>Напишіть нам</h2>
+      <form id="supportForm">
+        <label>Ваше ім'я
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Сповіщення
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button class="btn" type="submit">Надіслати</button>
+        <div class="msg" id="supportMsg"></div>
+      </form>
     </section>
   </main>
 
+  <!-- Футер -->
   <footer class="container footer">
     <small>© 2025 Standoff 2 Cup. Неофіційний фан-турнір.</small>
   </footer>
+
+  <script>
+    // Имитация отправки формы
+    document.getElementById('supportForm').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('supportMsg').textContent =
+        'Сповіщення відправленно!';
+    });
+  </script>
 </body>
 </html>
