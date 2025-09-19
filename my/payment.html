@@ -57,8 +57,7 @@
     document.getElementById('payBtn').addEventListener('click', () => {
       // відкриваємо оплату і виставляємо прапорець, щоб на реєстрації розблокувати відправку
       window.open(MONO_URL, '_blank', 'noopener');
-     sessionStorage.setItem('clickedPay', '1');
-
+      localStorage.setItem('clickedPay', '1');
       const m = document.getElementById('payMsg');
       m.className='msg success';
       m.textContent='Після оплати поверніться на сторінку реєстрації та надішліть заявку.';
