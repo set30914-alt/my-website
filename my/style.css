@@ -67,9 +67,12 @@ input:focus, select:focus, textarea:focus{
   color: #0b0e12; font-weight: 800; letter-spacing: .3px;
   cursor: pointer; text-decoration:none; display:inline-block;
 }
-.btn.ghost{ background:transparent; border:1px solid #2a3144; color:var(--text); }
 .btn:hover{ filter: brightness(1.05); }
 .btn:disabled{ opacity:.6; cursor:not-allowed; }
+
+/* варіант прозорої кнопки */
+.btn.ghost{ background:transparent; border:1px solid #2a3144; color:var(--text); }
+
 .msg{ margin-top: 10px; min-height: 20px; color: var(--muted); }
 .msg.success{ color: #5cffb0; }
 .msg.error{ color: var(--danger); }
@@ -117,3 +120,36 @@ input:focus, select:focus, textarea:focus{
 input, select, textarea { font-size: 16px; } /* щоб iOS не масштабував */
 .container { padding-bottom: 32px; }
 @media (max-width: 680px){ .grid-2{ grid-template-columns:1fr; } }
+
+/* Візуально заблокована кнопка (JS додає/знімає клас) */
+.btn-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.notice{
+  margin-top:10px;
+  padding:12px 14px;
+  border:1px dashed #2a3144;
+  border-radius:12px;
+  background:#0f1320;
+  color:var(--muted);
+}
+
+.btn-tournament {
+  display: inline-block;
+  padding: 18px 32px;          /* більше внутрішніх відступів */
+  font-size: 20px;             /* більший текст */
+  font-weight: 800;            /* жирний шрифт */
+  text-decoration: none;
+  border-radius: 14px;         /* округлені кути */
+  background: linear-gradient(90deg, var(--accent), var(--accent-2)); /* яскравий градієнт */
+  color: #0b0e12;              /* темний текст на яскравому фоні */
+  box-shadow: 0 6px 20px rgba(0,0,0,.4); /* обʼємна тінь */
+  transition: transform 0.15s ease, filter 0.2s ease;
+}
+
+.btn-tournament:hover {
+  transform: scale(1.05);      /* трохи збільшується при наведенні */
+  filter: brightness(1.1);     /* робимо ще яскравішим */
+}

@@ -3,14 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Standoff 2 — Реєстрація на турнір</title>
+  <title>Реєстрація на турнір — Standoff 2 Cup</title>
   <link rel="stylesheet" href="style.css"/>
-  <style>
-    .note{background:#121622;border:1px dashed #2a3144;padding:12px;border-radius:12px;margin:12px 0}
-    .steps{margin:10px 0;padding-left:18px;color:#a9b3c1}
-    .steps li{margin:6px 0}
-    .btn-inline{display:inline-block;padding:6px 10px;border-radius:10px;background:linear-gradient(90deg,#4da3ff,#7cffc1);color:#0b0e12;text-decoration:none;font-weight:800}
-  </style>
+  <style>.btn.ghost{background:transparent;border:1px solid #2a3144;color:var(--text)}</style>
 </head>
 <body>
   <header class="site-header">
@@ -23,21 +18,6 @@
         <li><a class="btn-link active" href="register.html">Реєстрація</a></li>
       </ul>
     </nav>
-  </header>
-
-  <header class="container">
-    <h1>Standoff 2 — Реєстрація на турнір</h1>
-    <p class="subtitle">Спочатку оплатіть внесок 500 грн, потім надішліть заявку.</p>
-    <div class="note">
-      <strong>Як зареєструватись:</strong>
-      <ol class="steps">
-        <li>Перейдіть на сторінку оплати та сплатіть <b>500 грн</b> за команду.</li>
-        <li>У коментарі платежу вкажіть <b>назву команди</b> і <b>@telegram капітана</b>.</li>
-        <li>Поверніться сюди, поставте позначку «Оплатив» і впишіть <b>коментар/ID платежу</b>.</li>
-        <li>Натисніть «Надіслати заявку» — ми перевіримо платіж і підтвердимо участь.</li>
-      </ol>
-      <a class="btn-inline" href="payment.html">Перейти до оплати</a>
-    </div>
   </header>
 
   <main class="container">
@@ -58,49 +38,39 @@
         <div class="grid-2">
           <label>
             Телефон (капітана) *
-            <input type="tel" name="phone" required placeholder="+380..."
-                   inputmode="tel" autocomplete="tel" />
+            <input type="tel" name="phone" required placeholder="+380..." inputmode="tel" autocomplete="tel"/>
           </label>
-
           <label>
             Email (капітана) *
-            <input type="email" name="email" required placeholder="you@example.com"
-                   inputmode="email" autocomplete="email" />
+            <input type="email" name="email" required placeholder="you@example.com" inputmode="email" autocomplete="email"/>
           </label>
         </div>
 
         <label>
           Ім’я користувача в Telegram капітана *
-          <input type="text" name="telegram" required placeholder="@your_username"
-                 autocapitalize="off" autocorrect="off" spellcheck="false" />
+          <input type="text" name="telegram" required placeholder="@your_username" autocapitalize="off" autocorrect="off"/>
         </label>
 
         <label>
-          Склад гравців (до 5 нікнеймів, кожен з нового рядка) *
-          <textarea id="players" name="players" required rows="6"
-            placeholder="1) ...&#10;2) ...&#10;3) ...&#10;4) ...&#10;5) ..."></textarea>
-        </label>
+        Склад гравців (до 5 нікнеймів, кожен з нового рядка) *
+        <textarea id="players" name="players" required rows="6"
+          placeholder="1) ...&#10;2) ...&#10;3) ...&#10;4) ...&#10;5) ..."></textarea>
+      </label>
+
 
         <div class="grid-2">
           <label>
             Середній ранг команди *
-            <select id="rank" name="rank" required>
+            <select name="rank" required>
               <option value="">— оберіть —</option>
-              <option>Bronze</option>
-              <option>Silver</option>
-              <option>Gold</option>
-              <option>Phoenix</option>
-              <option>Ranger</option>
-              <option>Champion</option>
-              <option>Master</option>
-              <option>Elite</option>
-              <option>The Legend</option>
+              <option>Bronze</option><option>Silver</option><option>Gold</option>
+              <option>Phoenix</option><option>Ranger</option><option>Champion</option>
+              <option>Master</option><option>Elite</option><option>The Legend</option>
             </select>
           </label>
-
           <label>
             Область (регіон) *
-            <select id="region" name="region" required>
+            <select name="region" required>
               <option value="">— оберіть область —</option>
               <option>Вінницька</option><option>Волинська</option><option>Дніпропетровська</option>
               <option>Донецька</option><option>Житомирська</option><option>Закарпатська</option>
@@ -116,27 +86,25 @@
           </label>
         </div>
 
-      
-<h2 style="margin-top:18px;">Підтвердження оплати</h2>
-<div class="grid-2">
-  <label>
-    Назва команди + @telegram капітана (як у коментарі до платежу) *
-    <input type="text" name="paymentInfo" id="paymentInfo" required
-           placeholder="Напр., Pavuchata @olxiy" />
-  </label>
-  <label class="checkbox" style="align-items:center;">
-    <input type="checkbox" name="paid" id="paid" required />
-    Підтверджую, що оплатив(-ла) внесок 500 грн
-  </label>
-</div>
-
-
         <label class="checkbox">
-          <input type="checkbox" name="agree" required />
+          <input type="checkbox" name="agree" required/>
           Погоджуюсь з <a href="privacy.html" target="_blank">умовами обробки персональних даних</a> *
         </label>
 
-        <button type="submit" class="btn" id="submitBtn">Надіслати заявку</button>
+       <div class="row" style="margin-top:14px;">
+  <button type="submit" class="btn btn-disabled" id="submitBtn" disabled>Надіслати заявку</button>
+  <button type="button" class="btn" id="goPay">Перейти до оплати</button>
+</div>
+
+
+       <p class="hint">Кнопка «Надіслати заявку» стане активною після натискання «Перейти до оплати».</p>
+
+<div class="notice">
+  <strong>Важливо:</strong> під час оплати в Monobank у полі «Коментар» вкажіть:
+  <b>Назва команди + @telegram капітана</b>.
+</div>
+
+       
         <p id="formMsg" class="msg" aria-live="polite"></p>
       </section>
     </form>

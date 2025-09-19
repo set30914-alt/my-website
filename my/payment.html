@@ -6,15 +6,9 @@
   <title>Оплата участі — Standoff 2 Cup</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    .qr-box {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .qr-box img {
-      max-width: 220px;
-      margin: 10px auto;
-      display: block;
-    }
+    .qr-box { margin-top: 20px; text-align: center; }
+    .qr-box img { max-width: 220px; margin: 10px auto; display: block; }
+    .hint { color: var(--muted); margin-top: 8px; }
   </style>
 </head>
 <body>
@@ -32,28 +26,43 @@
 
   <main class="container">
     <h1>Оплата участі</h1>
-    <p>Внесок за участь команди становить <strong>500 грн</strong> (50 грн з гравця).  
-       Оплата здійснюється капітаном команди.</p>
+    <p>Внесок за участь команди становить <strong>500 грн</strong>.</p>
 
-    <!-- ✅ Кнопка на баночку Monobank -->
-    <a href="https://send.monobank.ua/jar/9it8qfz5vp" target="_blank" class="btn">
-      Оплатити 500 грн через Monobank
-    </a>
+    <button id="payBtn" class="btn">Оплатити 500 грн через Monobank</button>
+    <div class="notice">
+  <strong>Не забудьте:</strong> у коментарі до платежу вкажіть
+  <b>Назва команди + @telegram капітана</b>.
+</div>
 
-    <p class="subtitle">
-      📌 Якщо сторінка довго вантажиться на комп’ютері — відкрийте її з телефону.  
-      Або скористайтесь QR-кодом нижче:
-    </p>
+    <div class="hint">Якщо сторінка баночки довго вантажиться на ПК — відкрийте посилання з телефона.</div>
+    <p class="hint">Пряме посилання: <a href="https://send.monobank.ua/jar/9it8qfz5vp" target="_blank" rel="noopener">https://send.monobank.ua/jar/9it8qfz5vp</a></p>
 
-    <!-- ✅ QR-код баночки -->
     <div class="qr-box">
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://send.monobank.ua/jar/9it8qfz5vp" alt="QR для оплати Monobank">
-      <p>Відскануйте цей QR-код у додатку Monobank</p>
+      <p class="hint">Відскануйте QR у додатку Monobank</p>
     </div>
+
+    <hr style="border-color:#232837; margin:20px 0;">
+
+    <a href="register.html" class="btn">Повернутися до підтвердження</a>
+    <p id="payMsg" class="msg" aria-live="polite"></p>
   </main>
 
   <footer class="container footer">
     <small>© 2025 Standoff 2 Cup. Неофіційний фан-турнір.</small>
   </footer>
+
+  <script>
+    const MONO_URL = 'https://send.monobank.ua/jar/9it8qfz5vp';
+    document.getElementById('payBtn').addEventListener('click', () => {
+      // відкриваємо оплату і виставляємо прапорець, щоб на реєстрації розблокувати відправку
+      window.open(MONO_URL, '_blank', 'noopener');
+     sessionStorage.setItem('clickedPay', '1');
+
+      const m = document.getElementById('payMsg');
+      m.className='msg success';
+      m.textContent='Після оплати поверніться на сторінку реєстрації та надішліть заявку.';
+    });
+  </script>
 </body>
 </html>
